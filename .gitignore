@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Google Colab
+/content/
+
+# Raw datasets
+data/raw/
+
+# Generated images
+data/generated/
+
+# Large model checkpoints
+*.pth
+*.pt
+
+# OS files
+.DS_Store
+Thumbs.db
