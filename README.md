@@ -35,6 +35,18 @@ The objectives of this project are to:
 - Document a fully reproducible deep learning workflow.
 
 ---
+## Experimental Workflow
+
+The project followed the workflow below:
+
+1. Train Binary Classifier A using transfer learning on the original Dogs vs. Cats dataset.
+2. Downscale images from 128×128 to 32×32.
+3. Train the Super-Resolution GAN (SRGAN) for 150 epochs.
+4. Generate high-resolution synthetic images using the trained generator.
+5. Train Binary Classifier B using the SRGAN-generated images.
+6. Evaluate both classifiers using Accuracy, Precision, Recall, F1 Score, and ROC-AUC.
+7. Compare the performance of both models.
+---
 
 # Dataset
 
@@ -131,7 +143,26 @@ This notebook will:
 - Train the SRGAN for at least 150 epochs
 - Generate high-resolution images
 
----
+------------------------------------------
+## SRGAN Architecture
+
+The SRGAN consists of two neural networks trained simultaneously.
+
+Generator
+- Receives low-resolution (32×32) images.
+- Produces super-resolved 128×128 images.
+
+Discriminator
+- Distinguishes real images from generated images.
+
+The generator is optimized using three loss components:
+
+• Pixel Loss
+• Perceptual (Content) Loss
+• Adversarial Loss
+
+Combining these losses enables the model to generate images with improved visual quality while preserving important image features.
+-----------------------------------------------
 
 ## Notebook 3
 ### Classifier B and Model Comparison
@@ -165,7 +196,26 @@ This notebook will:
 
 # Results
 
-Model checkpoints, evaluation metrics, figures, and prediction files are saved throughout the project to support reproducibility and future analysis.
+The SRGAN successfully completed the required 150 training epochs.
+
+### Synthetic Images Generated
+
+- Cats: 7,857
+- Dogs: 7,849
+
+**Total Images Generated:** 15,706
+
+### Binary Classifier B Performance
+
+| Metric | Value |
+|---------|------:|
+| Accuracy | 0.8803 |
+| Precision | 0.8816 |
+| Recall | 0.8786 |
+| F1 Score | 0.8801 |
+| ROC-AUC | 0.9534 |
+
+A complete comparison between Binary Classifier A and Binary Classifier B is presented in Notebook 3.
 
 ---
 
@@ -175,8 +225,19 @@ This repository is intended for educational purposes as part of an Artificial In
 
 The Dogs vs. Cats dataset is not redistributed with this repository and remains the property of its original providers.
 
----
+---------------------------------------------------
 
+# References
+
+Ledig, C., Theis, L., Huszár, F., Caballero, J., Cunningham, A., Acosta, A., Aitken, A., Tejani, A., Totz, J., Wang, Z., & Shi, W. (2017). *Photo-Realistic Single Image Super-Resolution Using a Generative Adversarial Network*. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR).
+
+PyTorch. https://pytorch.org
+
+Torchvision. https://pytorch.org/vision
+
+Kaggle Dogs vs. Cats Dataset.
+
+---------------------------------------------------
 # Acknowledgments
 
 - PyTorch
