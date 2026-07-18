@@ -215,7 +215,7 @@ The SRGAN successfully completed the required 150 training epochs.
 | F1 Score | 0.8801 |
 | ROC-AUC | 0.9534 |
 
-A complete comparison between Binary Classifier A and Binary Classifier B is presented in Notebook 3.
+A detailed comparison and discussion of the experimental results are provided in Notebook 3, including an analysis of why the baseline classifier outperformed the SRGAN-augmented classifier.
 
 ---
 
